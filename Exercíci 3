@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Aluno {
+    String nome;
+    double nota;
+
+    public Aluno(String nome, double nota) {
+        this.nome = nome;
+        this.nota = nota;
+    }
+}
+
+public class RegistroDeNotas {
+    public static void main(String[] args) {
+        ArrayList<Aluno> alunos = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+
+        // Cadastrando alunos
+        System.out.print("Quantos alunos deseja cadastrar? ");
+        int quantidade = scanner.nextInt();
+        scanner.nextLine(); // Consumir quebra de linha
+
+        for (int i = 0; i < quantidade; i++) {
+            System.out.print("Nome do aluno: ");
+            String nome = scanner.nextLine();
+            System.out.print("Nota do aluno: ");
+            double nota = scanner.nextDouble();
+            scanner.nextLine(); // Consumir quebra de linha
+            alunos.add(new Aluno(nome, nota));
+        }
+
+        // Calculando a média
+        double soma = 0;
+        for (Aluno aluno : alunos) {
+            soma += aluno.nota;
+        }
+        double media = soma / alunos.size();
+        System.out.println("\nMédia geral da turma: " + media);
+
+        // Exibindo alunos com média maior que 7.0
+        System.out.println("\nAlunos com nota maior que 7.0:");
+        for (Aluno aluno : alunos) {
+            if (aluno.nota > 7.0) {
+                System.out.println(aluno.nome + " - Nota: " + aluno.nota);
+            }
+        }
+
+        scanner.close();
+    }
+}
