@@ -1,0 +1,49 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package lista.de.livros;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author massa
+ */
+public class ListaDeLivros {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        ArrayList<String> livros = new ArrayList<>();
+
+        // Adicionando livros à lista
+        livros.add("Biblia em HQ");
+        livros.add("Dragoes, macas, e uma pitada de cafune");
+        livros.add("O menino maluquinho");
+        livros.add("Como fazer um cuscuz paulista");
+        livros.add("Diario de um banana");
+        System.out.println("Lista de livros cadastrados:");
+        for (String livro : livros) {
+            System.out.println(livro);
+        }
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\nDigite o nome do livro que deseja emprestar: ");
+        String livroEmprestado = scanner.nextLine();
+        emprestarLivro(livros, livroEmprestado);
+        System.out.println("\nLista de livros atualizada:");
+        for (String livro : livros) {
+            System.out.println(livro);
+        }
+    }
+    public static void emprestarLivro(ArrayList<String> livros, String nomeLivro) {
+        if (livros.contains(nomeLivro)) {
+            livros.remove(nomeLivro);
+            System.out.println("\nO livro '" + nomeLivro + "' foi emprestado com sucesso.");
+        } else {
+            System.out.println("\nErro: O livro '" + nomeLivro + "' não está disponível na lista.");
+        }
+    }
+}
